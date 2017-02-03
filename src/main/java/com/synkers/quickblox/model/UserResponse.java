@@ -1,9 +1,9 @@
 package com.synkers.quickblox.model;
 
-public class UserSignUpResponse {
+public class UserResponse {
     private User user;
 
-    public UserSignUpResponse(User user) {
+    public UserResponse(User user) {
         this.user = user;
     }
 

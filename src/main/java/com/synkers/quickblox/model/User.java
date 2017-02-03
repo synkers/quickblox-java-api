@@ -12,6 +12,7 @@ public class User {
     private String facebook_id;
     private String external_user_id;
     private String full_name;
+    private String old_password;
 
     public User(String login, String email, String full_name, String password) {
         this.login = login;
@@ -113,10 +114,19 @@ public class User {
         this.id = id;
     }
 
+    public String getOld_password() {
+        return old_password;
+    }
+
+    public void setOld_password(String old_password) {
+        this.old_password = old_password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", twitter_id='" + twitter_id + '\'' +
                 ", phone='" + phone + '\'' +
@@ -126,6 +136,7 @@ public class User {
                 ", facebook_id='" + facebook_id + '\'' +
                 ", external_user_id='" + external_user_id + '\'' +
                 ", full_name='" + full_name + '\'' +
+                ", old_password='" + old_password + '\'' +
                 '}';
     }
 }
