@@ -19,7 +19,7 @@ public class QbUsersApi {
     public QbUsersApi() throws AuthenticationException {
         RetrofitUtil<Users> retrofitUtil = new RetrofitUtil<Users>();
         if (QuickBlox.getAuthToken() != null) {
-            retrofitUtil.addHeader(QuickBlox.TOKEN_KEY, QuickBlox.getAuthToken());
+            retrofitUtil.addHeader(QuickBlox.HEADER_TOKEN_KEY, QuickBlox.getAuthToken());
         } else {
             throw new AuthenticationException("Need to be authenticated");
         }
@@ -48,7 +48,7 @@ public class QbUsersApi {
             }
 
             public void onFailure(Call<UserSignUpResponse> call, Throwable throwable) {
-                signUpCallback.onFailure("Failed");
+                signUpCallback.onFailure(throwable.toString());
             }
         });
     }

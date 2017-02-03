@@ -10,6 +10,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.IOException;
+
 public class QbSessionApi {
     private Session session;
 
@@ -21,7 +23,7 @@ public class QbSessionApi {
     public interface SessionCallback {
         void onSuccess(com.synkers.quickblox.model.Session session);
 
-        void onFailure();
+        void onFailure(String reason);
     }
 
     public void getUserAuthorization(final SessionCallback sessionCallback) {
@@ -33,12 +35,16 @@ public class QbSessionApi {
                     QuickBlox.authToken = response.body().getSession().getToken();
                     sessionCallback.onSuccess(response.body().getSession());
                 } else {
-                    sessionCallback.onFailure();
+                    try {
+                        sessionCallback.onFailure("Response Code:" + response.code() + " Response Body:" + response.errorBody().string());
+                    } catch (IOException e) {
+                        sessionCallback.onFailure("Error getting response body" + e.toString());
+                    }
                 }
             }
 
             public void onFailure(Call<UserAuthorizationResponse> call, Throwable throwable) {
-                sessionCallback.onFailure();
+                sessionCallback.onFailure(throwable.toString());
             }
         });
     }

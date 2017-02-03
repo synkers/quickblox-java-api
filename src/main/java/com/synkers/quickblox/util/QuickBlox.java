@@ -6,7 +6,7 @@ import com.synkers.quickblox.exception.AuthenticationException;
 
 public class QuickBlox {
     public static final String API_BASE_URL = "https://api.quickblox.com/";
-    public static final String TOKEN_KEY = "QB-Token";
+    public static final String HEADER_TOKEN_KEY = "QB-Token";
     public static String APPLICATION_ID;
     public static String AUTH_KEY;
     public static String AUTH_SECRET;
