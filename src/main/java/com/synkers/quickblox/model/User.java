@@ -1,9 +1,9 @@
 package com.synkers.quickblox.model;
 
 public class User {
+    private String id;
     private String login;
     private String password;
-
     private String twitter_id;
     private String phone;
     private String tag_list;
@@ -103,6 +103,14 @@ public class User {
 
     public void setFull_name(String full_name) {
         this.full_name = full_name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
