@@ -3,10 +3,7 @@ package com.synkers.quickblox.module;
 import com.synkers.quickblox.model.UserRequest;
 import com.synkers.quickblox.model.UserResponse;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 public interface Users {
     @POST("/users.json")
@@ -14,4 +11,7 @@ public interface Users {
 
     @PUT("/users/{userId}.json")
     Call<UserResponse> updateUser(@Path("userId") String userId, @Body UserRequest userRequest);
+
+    @GET("/users/{userId}.json")
+    Call<UserResponse> getUserByIdentifier(@Path("userId") String userId);
 }

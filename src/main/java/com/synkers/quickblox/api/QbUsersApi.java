@@ -39,6 +39,11 @@ public class QbUsersApi {
         users.signUp(userRequest).enqueue(responseHandler);
     }
 
+    public void getUserById(String id, final UsersCallback usersCallback) {
+        this.usersCallback = usersCallback;
+        users.getUserByIdentifier(id).enqueue(responseHandler);
+    }
+
     public void updateUserPassword(User user, String oldPassword, String password, final UsersCallback usersCallback) {
         this.usersCallback = usersCallback;
         user.setPassword(password);
