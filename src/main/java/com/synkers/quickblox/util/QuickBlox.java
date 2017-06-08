@@ -1,5 +1,6 @@
 package com.synkers.quickblox.util;
 
+import com.synkers.quickblox.api.QbChatApi;
 import com.synkers.quickblox.api.QbSessionApi;
 import com.synkers.quickblox.api.QbUsersApi;
 import com.synkers.quickblox.exception.AuthenticationException;
@@ -32,5 +33,9 @@ public class QuickBlox {
 
     public static QbUsersApi getUsersApi() throws AuthenticationException {
         return new QbUsersApi();
+    }
+
+    public static QbChatApi getChatApi() throws AuthenticationException {
+        return new QbChatApi();
     }
 }

@@ -28,7 +28,7 @@ public class RetrofitUtil<E> {
         this.headers = headers;
     }
 
-    public Object create(Class<E> clazz) {
+    public Object create(Class<?> clazz) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(new Interceptor() {
             public Response intercept(Chain chain) throws IOException {
