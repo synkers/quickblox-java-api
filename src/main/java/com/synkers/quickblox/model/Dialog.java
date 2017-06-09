@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class DialogCreationResponse {
+public class Dialog {
     @SerializedName("_id")
     public String id;
     public String created_at;
@@ -19,12 +19,12 @@ public class DialogCreationResponse {
     public String xmpp_room_jid;
     public int unread_messages_count;
 
-    public DialogCreationResponse() {
+    public Dialog() {
     }
 
     @Override
     public String toString() {
-        return "DialogCreationResponse{" +
+        return "Dialog{" +
                 "id='" + id + '\'' +
                 ", created_at='" + created_at + '\'' +
                 ", updated_at='" + updated_at + '\'' +
