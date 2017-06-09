@@ -1,8 +1,11 @@
 package com.synkers.quickblox.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class DialogCreationResponse {
+    @SerializedName("_id")
     public String id;
     public String created_at;
     public String updated_at;
