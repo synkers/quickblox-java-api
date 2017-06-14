@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class RetrofitUtil<E> {
     private Map<String, String> headers = new HashMap<String, String>();
@@ -41,6 +42,9 @@ public class RetrofitUtil<E> {
                 return chain.proceed(request);
             }
         });
+        httpClient.writeTimeout(1, TimeUnit.MINUTES);
+        httpClient.readTimeout(1, TimeUnit.MINUTES);
+        httpClient.connectTimeout(1, TimeUnit.MINUTES);
         return getBuilder().client(httpClient.build()).build().create(clazz);
     }
 }
