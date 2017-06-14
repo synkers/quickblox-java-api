@@ -1,10 +1,7 @@
 package com.synkers.quickblox.api;
 
 import com.synkers.quickblox.exception.AuthenticationException;
-import com.synkers.quickblox.model.Dialog;
-import com.synkers.quickblox.model.DialogCreationRequest;
-import com.synkers.quickblox.model.DialogDataUpdateFields;
-import com.synkers.quickblox.model.Dialogs;
+import com.synkers.quickblox.model.*;
 import com.synkers.quickblox.module.Chat;
 import com.synkers.quickblox.module.Users;
 import com.synkers.quickblox.util.QuickBlox;
@@ -52,10 +49,30 @@ public class QbChatApi {
         chat.updateDialog(dialogId, dialogUpdateFields).enqueue(responseHandler);
     }
 
+    public void getDialogs(DialogFilter dialogFilter, final DialogListCallback dialogListCallback) {
+        this.dialogListCallback = dialogListCallback;
+        chat.filterDialogByCustomData(dialogFilter.assemble()).enqueue(new Callback<Dialogs>() {
+            public void onResponse(Call<Dialogs> call, Response<Dialogs> response) {
+                if (response.isSuccessful()) {
+                    dialogListCallback.onSuccess(response.body());
+                } else {
+                    try {
+                        dialogListCallback.onFailure("Response Code:" + response.code() + " " + "Response Body:" + response.errorBody().string());
+                    } catch (IOException e) {
+                        dialogListCallback.onFailure("Error getting response body" + e.toString());
+                    }
+                }
+            }
+
+            public void onFailure(Call<Dialogs> call, Throwable throwable) {
+                dialogListCallback.onFailure(throwable.toString());
+            }
+        });
+    }
+
     public void getDialogs(final DialogListCallback dialogListCallback) {
         this.dialogListCallback = dialogListCallback;
-
-        chat.filterDialogByCustomData().enqueue(new Callback<Dialogs>() {
+        chat.getDialogs().enqueue(new Callback<Dialogs>() {
             public void onResponse(Call<Dialogs> call, Response<Dialogs> response) {
                 if (response.isSuccessful()) {
                     dialogListCallback.onSuccess(response.body());
