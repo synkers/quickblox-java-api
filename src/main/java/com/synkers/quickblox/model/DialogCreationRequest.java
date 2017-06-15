@@ -11,15 +11,15 @@ public class DialogCreationRequest {
     private String occupants_ids;
     private HashMap<String, Object> data;
 
-    public DialogCreationRequest(String name, Type type, List<String> occupantIds) {
+    public DialogCreationRequest(String name, DialogType dialogType, List<String> occupantIds) {
         this.name = name;
-        this.type = type.getValue();
+        this.type = dialogType.getValue();
         this.occupants_ids = StringUtils.join(occupantIds, ",");
     }
 
-    public DialogCreationRequest(String name, Type type, List<String> occupantIds, CustomDialogData customDialogData) {
+    public DialogCreationRequest(String name, DialogType dialogType, List<String> occupantIds, CustomDialogData customDialogData) {
         this.name = name;
-        this.type = type.getValue();
+        this.type = dialogType.getValue();
         this.occupants_ids = StringUtils.join(occupantIds, ",");
         this.data = customDialogData.assemble();
     }
@@ -54,20 +54,6 @@ public class DialogCreationRequest {
 
     public void setData(HashMap<String, Object> data) {
         this.data = data;
-    }
-
-    public enum Type {
-        PUBLIC_GROUP(1), GROUP(2), PRIVATE(3);
-
-        private final int value;
-
-        Type(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
     }
 
     @Override
