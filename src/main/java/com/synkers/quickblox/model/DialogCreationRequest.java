@@ -1,6 +1,6 @@
 package com.synkers.quickblox.model;
 
-import com.sun.deploy.util.StringUtils;
+import com.synkers.quickblox.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
