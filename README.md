@@ -22,7 +22,7 @@ String password
 <dependency>
   <groupId>com.synkers</groupId>
   <artifactId>quickblox-api</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 
