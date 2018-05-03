@@ -33,10 +33,10 @@ public class MessageItem {
     private Integer dateSent;
     @SerializedName("message")
     @Expose
-    private Object message;
+    private String message;
     @SerializedName("recipient_id")
     @Expose
-    private Object recipientId;
+    private Integer recipientId;
     @SerializedName("sender_id")
     @Expose
     private Integer senderId;
@@ -108,19 +108,19 @@ public class MessageItem {
         this.dateSent = dateSent;
     }
 
-    public Object getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Object message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public Object getRecipientId() {
+    public Integer getRecipientId() {
         return recipientId;
     }
 
-    public void setRecipientId(Object recipientId) {
+    public void setRecipientId(Integer recipientId) {
         this.recipientId = recipientId;
     }
 
@@ -139,5 +139,4 @@ public class MessageItem {
     public void setRead(Integer read) {
         this.read = read;
     }
-
 }

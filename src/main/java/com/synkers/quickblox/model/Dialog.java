@@ -6,18 +6,18 @@ import java.util.List;
 
 public class Dialog {
     @SerializedName("_id")
-    public String id;
-    public String created_at;
-    public String updated_at;
-    public String last_message;
-    public String last_message_date_sent;
-    public String last_message_user_id;
-    public String name;
-    public String photo;
-    public List<Integer> occupants_ids;
-    public int type;
-    public String xmpp_room_jid;
-    public int unread_messages_count;
+    private String id;
+    private String created_at;
+    private String updated_at;
+    private String last_message;
+    private String last_message_date_sent;
+    private String last_message_user_id;
+    private String name;
+    private String photo;
+    private List<Integer> occupants_ids;
+    private int type;
+    private String xmpp_room_jid;
+    private int unread_messages_count;
 
     public Dialog() {
     }
